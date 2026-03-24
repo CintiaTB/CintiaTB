@@ -1,4 +1,63 @@
 🚀 Business Operations Automation Suite
+Operations Strategy + Technology Execution (Python & Low-Code)
+Welcome to my repository of operational efficiency solutions. Here I present real, designed, and documented tools to solve business problems where commercial software falls short.
+
+📂 Development Index
+1. 🛡️ City Compliance Monitor
+Problem: Fines for obstructing public roads due to undetected traffic restrictions.
+
+The Solution: A bot that scans municipal bulletins (PDF) and cross-references data with active sites using Fuzzy Matching.
+
+Value: 100% elimination of fines and automation of 2 hours of daily review.
+
+Technology: Python, pdfplumber, fuzzywuzzy.
+
+2. 💰 Revenue Recovery Engine
+Problem: Revenue loss due to unbilled immobilized assets (containers/machinery).
+
+The Solution: Stock audit algorithm that automatically detects days of storage outside of contract.
+
+Value: Direct recovery of lost revenue and optimization of asset turnover.
+
+Technology: Python, Pandas, Data Analytics.
+
+3. 👥 Cloud-First HR & Absence Portal
+Problem: Chaotic management of personnel, vacations, and paper-based absence documents.
+
+The Solution: Digital ecosystem for managing absences and scheduling in real time.
+
+Value: Transition to a paperless model and complete visibility for the traffic department.
+
+Technology: HTML5, Firebase (NoSQL), JavaScript.
+
+4. 🚛 Fleet Preventive Maintenance System
+Problem: Preventable breakdowns and lack of traceability in heavy fleet maintenance.
+
+The Solution: Repair control app linked to the vehicle database for preventive alerts.
+
+Value: Increased fleet lifespan and reduced vehicle downtime.
+
+Technology: Firebase Realtime DB, HTML/JS.
+
+5. 📄 Smart Proforma Generator
+Problem: Complexity in calculating custom rates and excessive time spent generating invoices.
+
+The Solution: Automated proforma generator with dynamic pricing logic.
+
+Value: Reduced invoicing time and elimination of calculation errors.
+
+Technology: Python, Jinja2 (Templates), PDF Generation.
+
+🛠️ Professional Delivery Standard
+Unlike conventional development, my solutions are delivered as Business Products:
+
+Portable Executable (.exe): Ready to run without technical installation.
+
+Operating Manuals (PDF): Step-by-step documentation for non-technical users.
+
+Adaptable Architecture: Logic ready to connect to Excel or local databases.
+
+🚀 Business Operations Automation Suite
 Estrategia de Operaciones + Ejecución Tecnológica (Python & Low-Code)
 Bienvenido a mi repositorio de soluciones de eficiencia operativa. Aquí presento herramientas reales, diseñadas y documentadas para resolver problemas de negocio donde el software comercial no llega.
 
