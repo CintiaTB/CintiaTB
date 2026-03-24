@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuestador Pro - Edición Corporativa</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #2980b9; --success: #27ae60; --bg: #f1f4f9; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #333; }
+        
+        /* Navegación */
+        .nav { background: var(--primary); display: flex; padding: 0 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .nav-btn { background: none; border: none; color: white; padding: 15px 20px; cursor: pointer; font-weight: bold; opacity: 0.7; }
+        .nav-btn.active { opacity: 1; border-bottom: 4px solid var(--success); }
+        
+        .content { padding: 20px; max-width: 1100px; margin: auto; display: none; }
+        .content.active { display: block; }
+
+        .layout { display: grid; grid-template-columns: 340px 1fr; gap: 25px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; margin-bottom: 20px; }
+        
+        /* Inputs y Form */
+        label { display: block; font-size: 0.75em; font-weight: 700; color: #666; text-transform: uppercase; margin-bottom: 4px; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 0.9em; margin-bottom: 12px; }
+        
+        /* Cabecera Impresión */
+        .header-print { display: none; align-items: center; justify-content: space-between; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 20px; }
+        #logo-preview { max-height: 80px; max-width: 200px; }
+
+        /* Planos */
+        .ventana-ficha { background: white; border: 1.5px solid #000; padding: 20px; margin-bottom: 30px; position: relative; page-break-inside: avoid; }
+        .datos-tecnicos { border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 10px; font-size: 0.9em; }
+
+        /* Pie de Página Legal */
+        .legal-footer { display: none; margin-top: 40px; font-size: 0.7em; color: #666; border-top: 1px solid #ccc; padding-top: 10px; }
+
+        .total-bar { position: sticky; bottom: 0; background: var(--primary); color: white; padding: 20px; text-align: right; font-size: 1.4em; font-weight: bold; width: 100%; box-sizing: border-box; z-index: 100; }
+        .btn-main { background: var(--success); color: white; border: none; padding: 15px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+        @media print { 
+            .no-print, .nav, .sidebar, .btn-del { display: none !important; }
+            .content { display: block !important; padding: 0; }
+            .layout { display: block; }
+            .header-print, .legal-footer { display: flex; }
+            .legal-footer { display: block; }
+            .ventana-ficha { border: 1px solid #000; }
+            .total-bar { position: static; color: black; background: none; border-top: 2px solid #000; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav no-print">
+    <button class="nav-btn active" onclick="showTab('tab-pres')">🖥️ EDITOR</button>
+    <button class="nav-btn" onclick="showTab('tab-conf')">⚙️ MI EMPRESA / CONFIG</button>
+</div>
+
+<div id="tab-pres" class="content active">
+    
+    <div class="header-print">
+        <div id="logo-container">
+            <img id="display-logo" src="" style="display:none;">
+        </div>
+        <div style="text-align: right;">
+            <h2 id="print-nombre-empresa" style="margin:0;">Mi Empresa de Reformas</h2>
+            <p id="print-datos-empresa" style="font-size: 0.8em; margin: 5px 0;">CIF: B12345678 | Calle Industria 5, Madrid</p>
+            <p style="font-size: 0.8em; font-weight: bold;">Fecha: <span id="fecha-hoy"></span></p>
+        </div>
+    </div>
+
+    <div class="layout">
+        <div class="sidebar no-print">
+            <div class="card">
+                <h3>Nueva Ventana</h3>
+                <label>Ref. Ubicación</label><input type="text" id="ref" value="Salón Principal">
+                <label>Serie</label><select id="sel-serie"></select>
+                <label>Cristal</label><select id="sel-cristal"></select>
+                <label>Color</label><input type="text" id="inp-color" value="Lacado Blanco">
+                <div style="display:flex; gap:10px">
+                    <div><label>Ancho (mm)</label><input type="number" id="w" value="1200"></div>
+                    <div><label>Alto (mm)</label><input type="number" id="h" value="1200"></div>
+                </div>
+                <label>Apertura</label>
+                <select id="tipo">
+                    <option value="corredera">Corredera</option>
+                    <option value="abatible">Abatible</option>
+                    <option value="oscilo">Oscilobatiente</option>
+                </select>
+                <button class="btn-main" onclick="addVentana()">AÑADIR AL LISTADO</button>
+            </div>
+        </div>
+
+        <div class="main">
+            <div id="planos-contenedor"></div>
+        </div>
+    </div>
+
+    <div class="legal-footer">
+        <p><strong>Validez del presupuesto:</strong> 30 días naturales a partir de la fecha de emisión.</p>
+        <p style="text-align: justify;"><strong>Información básica sobre Protección de Datos:</strong> En cumplimiento del RGPD, le informamos que sus datos personales serán tratados para la gestión administrativa y prestación del servicio contratado. Puede ejercer sus derechos de acceso, rectificación y supresión contactando con la empresa. Este documento es un presupuesto estimativo basado en las medidas facilitadas.</p>
+    </div>
+</div>
+
+<div id="tab-conf" class="content">
+    <div class="card">
+        <h3>Datos de Empresa y Logo</h3>
+        <label>Logo de empresa</label>
+        <input type="file" id="logo-input" accept="image/*" onchange="handleLogo(this)">
+        <label>Nombre Comercial</label>
+        <input type="text" id="emp-nombre" value="REFORMAS DE VENTANAS" oninput="syncEmpresa()">
+        <label>Datos Fiscales / Dirección / Contacto</label>
+        <textarea id="emp-datos" rows="3" oninput="syncEmpresa()">CIF: 0000000X | Calle Ejemplo 12, Ciudad | Tel: 600 000 000</textarea>
+    </div>
+
+    <div class="card">
+        <h3>Tarifas Base</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+            <div>
+                <h4>Series (€/m²)</h4>
+                <div style="display:flex; gap:5px;"><input id="ns"><input id="ps" type="number"><button onclick="saveC('s')">+</button></div>
+                <ul id="l-s"></ul>
+            </div>
+            <div>
+                <h4>Cristales (€/m²)</h4>
+                <div style="display:flex; gap:5px;"><input id="nc"><input id="pc" type="number"><button onclick="saveC('c')">+</button></div>
+                <ul id="l-c"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="total-bar no-print" id="total-bar" style="display:none;">
+    TOTAL: <span id="suma-total">0</span> €
+    <button onclick="window.print()" style="margin-left:20px; padding:10px; cursor:pointer;">IMPRIMIR PDF</button>
+</div>
+
+<script>
+    let config = {
+        series: [{n:"RPT 67", p:160}],
+        cristales: [{n:"4/16/4 Climalit", p:55}]
+    };
+    let presupuesto = [];
+
+    // Gestión de Logo
+    function handleLogo(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('display-logo').src = e.target.result;
+                document.getElementById('display-logo').style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function syncEmpresa() {
+        document.getElementById('print-nombre-empresa').innerText = document.getElementById('emp-nombre').value;
+        document.getElementById('print-datos-empresa').innerText = document.getElementById('emp-datos').value;
+    }
+
+    function showTab(id) {
+        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        updateD();
+    }
+
+    function saveC(t) {
+        if(t==='s') config.series.push({n:document.getElementById('ns').value, p:parseFloat(document.getElementById('ps').value)});
+        else config.cristales.push({n:document.getElementById('nc').value, p:parseFloat(document.getElementById('pc').value)});
+        updateD(); renderC();
+    }
+
+    function updateD() {
+        document.getElementById('sel-serie').innerHTML = config.series.map((s,i) => `<option value="${i}">${s.n}</option>`).join('');
+        document.getElementById('sel-cristal').innerHTML = config.cristales.map((c,i) => `<option value="${i}">${c.n}</option>`).join('');
+    }
+
+    function addVentana() {
+        const s = config.series[document.getElementById('sel-serie').value];
+        const c = config.cristales[document.getElementById('sel-cristal').value];
+        const w = parseFloat(document.getElementById('w').value);
+        const h = parseFloat(document.getElementById('h').value);
+        const p = (w/1000 * h/1000) * (s.p + c.p);
+
+        presupuesto.push({
+            id: Date.now(),
+            ref: document.getElementById('ref').value,
+            serie: s.n, cristal: c.n, 
+            color: document.getElementById('inp-color').value,
+            w, h, p, tipo: document.getElementById('tipo').value
+        });
+        renderP();
+    }
+
+    function renderP() {
+        const cont = document.getElementById('planos-contenedor');
+        cont.innerHTML = ''; let total = 0;
+        document.getElementById('fecha-hoy').innerText = new Date().toLocaleDateString();
+
+        presupuesto.forEach(v => {
+            total += v.p;
+            const esc = Math.min(280/v.w, 200/v.h);
+            const W = v.w * esc; const H = v.h * esc;
+            const OX = 80; const OY = 40;
+
+            let extra = '';
+            if(v.tipo === 'corredera') {
+                extra = `<line x1="${OX+W/2}" y1="${OY}" x2="${OX+W/2}" y2="${OY+H}" stroke="#000"/><path d="M${OX+10},${OY+H/2} h20" stroke="#000" marker-end="url(#arr)"/><path d="M${OX+W-10},${OY+H/2} h-20" stroke="#000" marker-end="url(#arr)"/>`;
+            } else if(v.tipo === 'abatible' || v.tipo === 'oscilo') {
+                extra = `<path d="M${OX},${OY} L${OX+W},${OY+H/2} L${OX},${OY+H}" fill="none" stroke="#999" stroke-dasharray="4"/>`;
+                if(v.tipo === 'oscilo') extra += `<path d="M${OX},${OY+H} L${OX+W/2},${OY} L${OX+W},${OY+H}" fill="none" stroke="#999" stroke-dasharray="4"/>`;
+            }
+
+            cont.innerHTML += `
+                <div class="ventana-ficha">
+                    <button class="btn-del no-print" onclick="delV(${v.id})">Eliminar</button>
+                    <div class="datos-tecnicos"><strong>${v.ref}</strong> | SERIE: ${v.serie} | COLOR: ${v.color} | CRISTAL: ${v.cristal}</div>
+                    <svg width="450" height="300">
+                        <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#000"/></marker></defs>
+                        <rect x="${OX}" y="${OY}" width="${W}" height="${H}" fill="none" stroke="#000" stroke-width="2"/>
+                        ${extra}
+                        <line x1="${OX}" y1="${OY+H+20}" x2="${OX+W}" y2="${OY+H+20}" stroke="#000" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                        <text x="${OX+W/2}" y="${OY+H+35}" text-anchor="middle" font-weight="bold">${v.w} mm</text>
+                        <line x1="${OX-40}" y1="${OY}" x2="${OX-40}" y2="${OY+H}" stroke="#000" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                        <text x="${OX-50}" y="${OY+H/2}" text-anchor="middle" font-weight="bold" transform="rotate(-90 ${OX-50} ${OY+H/2})">${v.h} mm</text>
+                    </svg>
+                    <div style="text-align:right">Subtotal: ${v.p.toFixed(2)} €</div>
+                </div>`;
+        });
+        document.getElementById('suma-total').innerText = total.toFixed(2);
+        document.getElementById('total-bar').style.display = total > 0 ? 'block' : 'none';
+    }
+
+    function delV(id) { presupuesto = presupuesto.filter(v=>v.id!==id); renderP(); }
+    function renderC() {
+        document.getElementById('l-s').innerHTML = config.series.map(s => `<li>${s.n} (${s.p}€)</li>`).join('');
+        document.getElementById('l-c').innerHTML = config.cristales.map(c => `<li>${c.n} (${c.p}€)</li>`).join('');
+    }
+
+    updateD(); renderC();
+</script>
+</body>
+</html>
