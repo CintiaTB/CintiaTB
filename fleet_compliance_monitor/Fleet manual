@@ -1,0 +1,20 @@
+Fleet & Staff Compliance Monitor (Avisos de Vencimientos)
+🇪🇸 Versión en Español: Manual Operativo
+Descripción: Sistema de notificaciones automáticas diseñado para garantizar la vigencia de la documentación técnica y legal de conductores y flota.
+•	Propósito: Eliminar el riesgo de operar con documentos caducados (ITV, seguros, carnets) mediante alertas proactivas.
+•	Funcionamiento:
+1.	Cruce de Datos: El sistema vincula automáticamente el listado de vencimientos con la base de datos de personal y vehículos.
+2.	Filtrado Inteligente: Identifica registros que vencen en los próximos 30 días o que ya han caducado.
+3.	Notificación Multicanal: Envía alertas personalizadas por WhatsApp a los responsables/conductores y un resumen consolidado por email a la gerencia.
+•	Valor para el Negocio: Garantiza el cumplimiento normativo constante y reduce drásticamente el tiempo administrativo de supervisión manual.
+
+
+🇺🇸 English Version: User Manual
+Description: Automated notification system designed to ensure the validity of technical and legal documentation for drivers and the fleet.
+•	Purpose: To eliminate the risk of operating with expired documents (vehicle inspections, insurance, licenses) through proactive alerts.
+•	How it Works:
+1.	Data Merging: The system automatically links the expiration list with the staff and vehicle database.
+2.	Smart Filtering: It identifies records expiring within the next 30 days or those that have already expired.
+3.	Multi-channel Notification: Sends personalized WhatsApp alerts to those responsible/drivers and a consolidated email summary to management.
+•	Business Value: Ensures constant regulatory compliance and drastically reduces the administrative time spent on manual supervision.
+
