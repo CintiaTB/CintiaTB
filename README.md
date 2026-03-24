@@ -1,12 +1,8 @@
-Gemini ha dicho
-Perfecto. Para el mercado internacional, el inglés no es solo una traducción, es una herramienta de autoridad. En el mundo anglosajón se valora muchísimo el concepto de Operational Excellence y Business Intelligence.
-
-Aquí tienes la versión completa en inglés de tu README, diseñada para atraer a reclutadores de EE. UU., Europa y empresas remotas globales.
-
 🚀 Stuck with Bottlenecks and Slow Processes?
-Business Operations Architect & Automation Strategist
-"Automation without business vision is just accelerated chaos. My value isn't just the code; it's the ability to connect the dots that others miss."
 
+Business Operations Architect & Automation Strategist
+
+"Automation without business vision is just accelerated chaos. My value isn't just the code; it's the ability to connect the dots that others miss."
 Unlike conventional software developers who work in departmental silos, my approach is cross-functional. I understand that a delay in fleet maintenance isn't just a mechanical issue—it's a service capacity problem, a safety risk, and a potential loss in commercial margin.
 
 🧠 My Approach: Global Vision vs. Silo Thinking
