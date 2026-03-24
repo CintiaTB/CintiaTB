@@ -12,7 +12,9 @@ Departmental View (Silos)	My Global Vision (Systemic)	Solution Implemented
 Logistics: "We are short on trucks."	Operations: Expired vehicle inspections are blocking the fleet and increasing fine risks.	[Fleet Monitor]: Proactive alerts ensuring 100% legal availability.
 Sales: "I don't know what to bill."	Finance: Assets sitting idle on the street represent unbilled frozen capital.	[Revenue Recovery]: Algorithmic audit to recover "forgotten" revenue.
 HR: "Too much paperwork."	Strategy: Lack of real-time data on medical leaves prevents optimal resource planning.	[HR Portal]: Full visibility for immediate, data-driven decision making.
+
 🛠️ Featured Strategic Solutions
+
 🛡️ 1. City Compliance Bot (Legal + Operations)
 Vision: A traffic restriction isn't just a PDF from City Hall; it's a legal risk and a logistical roadblock.
 
