@@ -11,7 +11,7 @@ The Solution: A bot that scans municipal bulletins (PDF) and cross-references da
 Value: 100% elimination of fines and automation of 2 hours of daily review.
 
 Technology: Python, pdfplumber, fuzzywuzzy.
-
+ 
 2. 💰 Revenue Recovery Engine
 Problem: Revenue loss due to unbilled immobilized assets (containers/machinery).
 
