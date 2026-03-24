@@ -1,0 +1,58 @@
+🚀 Business Operations Automation Suite
+Estrategia de Operaciones + Ejecución Tecnológica (Python & Low-Code)
+Bienvenido a mi repositorio de soluciones de eficiencia operativa. Aquí presento herramientas reales, diseñadas y documentadas para resolver problemas de negocio donde el software comercial no llega.
+
+📂 Índice de Desarrollos
+1. 🛡️ City Compliance Monitor
+Problema: Sanciones por ocupación de vía pública debido a restricciones de tráfico no detectadas.
+
+La Solución: Robot que escanea boletines municipales (PDF) y cruza datos con sitios activos mediante Fuzzy Matching.
+
+Valor: Eliminación del 100% de multas y automatización de 2 horas de revisión diaria.
+
+Tecnología: Python, pdfplumber, fuzzywuzzy.
+
+2. 💰 Revenue Recovery Engine
+Problema: Fuga de ingresos por activos (contenedores/maquinaria) inmovilizados sin facturar excedidos.
+
+La Solución: Algoritmo de auditoría de stock que detecta automáticamente días de estancia fuera de contrato.
+
+Valor: Recuperación directa de facturación perdida y optimización de rotación de activos.
+
+Tecnología: Python, Pandas, Análisis de datos.
+
+3. 👥 Cloud-First HR & Absence Portal
+Problema: Gestión caótica de personal, vacaciones y justificantes en formato papel.
+
+La Solución: Ecosistema digital para la gestión de ausencias y planificación de cuadrantes en tiempo real.
+
+Valor: Transición al modelo "Paperless" y visibilidad total para el departamento de tráfico.
+
+Tecnología: HTML5, Firebase (NoSQL), JavaScript.
+
+4. 🚛 Fleet Preventive Maintenance System
+Problema: Averías evitables y falta de trazabilidad en el mantenimiento de flota pesada.
+
+La Solución: App de control de reparaciones vinculada a la base de datos de vehículos para alertas preventivas.
+
+Valor: Aumento de la vida útil de la flota y reducción de vehículos parados.
+
+Tecnología: Firebase Realtime DB, HTML/JS.
+
+5. 📄 Smart Proforma Generator
+Problema: Complejidad en el cálculo de tarifas personalizadas y tiempo excesivo en generación de facturas.
+
+La Solución: Generador automatizado de proformas con aplicación de lógica de precios dinámica.
+
+Valor: Reducción del tiempo de facturación y eliminación de errores de cálculo.
+
+Tecnología: Python, Jinja2 (Templates), PDF Generation.
+
+🛠️ Estándar de Entrega Profesional
+A diferencia de los desarrollos convencionales, mis soluciones se entregan como Productos de Negocio:
+
+Portable Executable (.exe): Listos para funcionar sin instalaciones técnicas.
+
+Manuales Operativos (PDF): Documentación paso a paso para usuarios no técnicos.
+
+Arquitectura Adaptable: Lógica preparada para conectarse a Excel o bases de datos locales.
