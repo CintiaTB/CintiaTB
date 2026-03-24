@@ -6,3 +6,12 @@ La Solución: Robot que escanea boletines municipales (PDF) y cruza datos con si
 Valor: Eliminación del 100% de multas y automatización de 2 horas de revisión diaria.
 
 Tecnología: Python, pdfplumber, fuzzywuzzy.
+
+1. 🛡️ City Compliance Monitor
+Problem: Fines for obstructing public roads due to undetected traffic restrictions.
+
+The Solution: A bot that scans municipal bulletins (PDFs) and cross-references data with active locations using fuzzy matching.
+
+Value: 100% elimination of fines and automation of 2 hours of daily review.
+
+Technology: Python, pdfplumber, fuzzywuzzy.
